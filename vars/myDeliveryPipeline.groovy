@@ -5,44 +5,15 @@ def call(Map pipelineParams) {
         stages {
             stage('checkout git') {
                 steps {
-                    sh 'echo checkout'
-                   // git branch: pipelineParams.branch, credentialsId: 'GitCredentials', url: pipelineParams.scmUrl
+                    // sh 'echo checkout'
+                    git branch: pipelineParams.branch, url: pipelineParams.scmUrl
                 }
             }
 
             stage('build') {
                 steps {
-                    sh 'echo Build'
+                    sh 'cat test.txt'
                 }
-            }
-
-            stage ('test') {
-                steps {
-                        sh 'echo test'
-                }
-            }
-
-            stage('deploy developmentServer'){
-                steps {
-                    sh 'echo deploy'
-                }
-            }
-
-            stage('deploy staging'){
-                steps {
-                   sh 'echo staging'
-                }
-            }
-
-            stage('deploy production'){
-                steps {
-                    sh 'echo deploy'
-                }
-            }
-        }
-        post {
-            failure {
-                sh "${env.BUILD_URL}"
             }
         }
     }
