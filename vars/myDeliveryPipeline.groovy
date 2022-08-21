@@ -1,12 +1,12 @@
-def call(String branch,String Url) {
+def call(Map pipelineParams) {
 
     pipeline {
         agent any
         stages {
             stage('checkout git') {
                 steps {
-                     sh 'echo checkout'
-                    git branch: "${params.branch}", url: "${params.Url}"
+                     // sh 'echo checkout'
+                    git branch: pipelineParams.branch, url: pipelineParams.Url
                 }
             }
 
