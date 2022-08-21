@@ -6,7 +6,7 @@ def call(String branch,String Url) {
             stage('checkout git') {
                 steps {
                      sh 'echo checkout'
-                    git branch: ${branch}, url: ${Url}
+                    git branch: "${branch}", url: "${Url}"
                 }
             }
 
